@@ -9,4 +9,4 @@ Code that removes residual distortions due to eye motion from images and videos 
 - Run command prompt as administrator
 - Navigate to Matlab python folder with: cd "matlabroot\extern\engines\python"
 - Use this command: python -m pip install .
-	-  https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html
+- https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html
