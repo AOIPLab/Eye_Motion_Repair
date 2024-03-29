@@ -145,7 +145,7 @@ for thisfile in os.listdir(dmp_folder_path):
             pickle_file.close()
 
             # Find the dmp's matching image(s).
-            modalities = ('confocal', 'split_det', 'avg', 'visible', 'PMT1CF', 'PMT2NW', 'PMT3NE', 'PMT4SE', 'PMT5SW', 'PMT1C', 'PMT2N', 'PMT3E', 'PMT4S', 'PMT5W') # added WAIVS modes
+            modalities = ('confocal', 'split_det', 'avg', 'visible', 'PMT1CF', 'PMT2NW', 'PMT3NE', 'PMT4SE', 'PMT5SW', 'PMT1C', 'PMT2N', 'PMT3E', 'PMT4S', 'PMT5W', 'avg_785nm', 'avg_673nm', 'NIRCON', 'split_diag45', 'split_diag135', 'split_horz', 'split_vert', 'VISCON') # added WAIVS modes, added quad modes
 
 
             images_to_fix =[]
