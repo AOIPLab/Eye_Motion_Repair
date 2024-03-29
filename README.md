@@ -3,6 +3,7 @@ Code that removes residual distortions due to eye motion from images and videos 
 
 - This version of the code runs on python 3 and can use updated matlab versions.
 - This script can handle multiple FOVs at a time and the results have a transparent fill.
+- Trim_Warped_Edges is helpful to run after to get rid of uneven edges so that they will work correctly with imageJ and automontager
 
 # To set up python 3 to connect to matlab
 
