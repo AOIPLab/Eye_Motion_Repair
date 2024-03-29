@@ -117,7 +117,7 @@ for thisfile in os.listdir(dmp_folder_path):
             pickle_file.close()
 
             # Find the dmp's matching image(s).
-            modalities = ('confocal', 'split_det', 'avg', 'visible')
+            modalities = ('confocal', 'split_det', 'avg', 'visible', 'avg_785nm', 'avg_673nm', 'NIRCON', 'split_diag45', 'split_diag135', 'split_horz', 'split_vert', 'VISCON')
 
             images_to_fix =[]
             # Find all images in our folder that this dmp applies to.
