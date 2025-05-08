@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8ee7589f-b4c2-4efc-a726-eb1956d5f7d9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -53,9 +56,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="719" />
     <option name="y" value="4" />
@@ -78,22 +81,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.Scanner_Distortion_Removal.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "python3__version"
+    "git-widget-placeholder": "python3__version",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Python.Scanner_Distortion_Removal">
     <configuration name="Distortion_Exporter" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Eye-Motion-Repair" />
@@ -140,8 +133,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Distortion_Exporter" />
       <item itemvalue="Python.Scanner_Distortion_Removal" />
+      <item itemvalue="Python.Distortion_Exporter" />
     </list>
     <recent_temporary>
       <list>
