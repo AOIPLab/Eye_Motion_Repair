@@ -38,32 +38,34 @@
 # tkFileDialog → tkinter.filedialog
 
 try:
-    import matlab.engine # This needs to be imported first for some stupid reason.
+    import matlab.engine  # This needs to be imported first for some stupid reason.
 except:
-    import tkinter as tk #import Tkinter as tk
-    #import Tkconstants, tkFileDialog, tkMessageBox
+    import tkinter as tk  # import Tkinter as tk
+    # import Tkconstants, tkFileDialog, tkMessageBox
     import tkinter.constants as Tkconstants
     import tkinter.filedialog as tkFileDialog
     import tkinter.messagebox as tkMessageBox
     import os, sys, ctypes
     import subprocess
     import socket
-    
+
     options = {}
     options['title'] = 'Please select your [MATLABROOT]\extern\engines\python folder to link to MATLAB.'
     matlab_folder_path = tkFileDialog.askdirectory(**options)
 
-    ctypes.windll.shell32.ShellExecuteW(None, u"runas",  unicode("C:\\Python27\\python.exe"), u"setup.py install", unicode(matlab_folder_path), 1)   
+    ctypes.windll.shell32.ShellExecuteW(None, u"runas", "C:\\Python311\\python.exe", u"setup.py install",
+                                        matlab_folder_path, 1)
 
     try:
         import matlab.engine
     except:
-        tkMessageBox.showerror("Linking (should be) successful!", "If the console did not display any errors, then linking successful! Please restart this script.")
+        tkMessageBox.showerror("Linking (should be) successful!",
+                               "If the console did not display any errors, then linking successful! Please restart this script.")
         sys.exit(0)
-        
+
 import os, pickle
-import tkinter as tk #import Tkinter as tk
-#import Tkconstants, tkFileDialog, tkMessageBox
+import tkinter as tk  # import Tkinter as tk
+# import Tkconstants, tkFileDialog, tkMessageBox
 import tkinter.constants as Tkconstants
 import tkinter.filedialog as tkFileDialog
 import tkinter.messagebox as tkMessageBox
@@ -74,9 +76,9 @@ root = tk.Tk()
 try:
     mat_engi = matlab.engine.start_matlab()
 except:
-    tkMessageBox.showerror("Unable to start MATLAB! Ensure you have a valid copy of MATLAB installed AND it has been linked with python.")
+    tkMessageBox.showerror(
+        "Unable to start MATLAB! Ensure you have a valid copy of MATLAB installed AND it has been linked with python.")
     quit(1)
-
 
 options = {}
 options['title'] = 'Select the folder containing the DESINUSOID files, or CANCEL to ignore:'
@@ -119,25 +121,27 @@ for thisfile in os.listdir(dmp_folder_path):
             # pickle_file.close()
             #
             # pickle_file = open(pickle_path, 'r')
-            # pick = pickle.load(pickle_file)  
+            # pick = pickle.load(pickle_file)
 
             # changed to python3 compat -- JDR
-            # Fix the fact that it was done originally in Windows...            
+            # Fix the fact that it was done originally in Windows...
             with open(pickle_path, 'rb') as pickle_file:
-                text = pickle_file.read().replace(b'\r\n', b'\n') # the b before '\r\n' and '\n' is key -- JDR
-            
+                text = pickle_file.read().replace(b'\r\n', b'\n')  # the b before '\r\n' and '\n' is key -- JDR
+
             with open(pickle_path, 'wb') as pickle_file:
                 pickle_file.write(text)
 
             with open(pickle_path, 'rb') as pickle_file:
-                pick = pickle.load(pickle_file, encoding="latin1") # for python 3 --  jDR
+                pick = pickle.load(pickle_file, encoding="latin1")  # for python 3 --  jDR
 
             ff_translation_info_rowshift = pick['full_frame_ncc']['row_shifts']
             ff_translation_info_colshift = pick['full_frame_ncc']['column_shifts']
             strip_translation_info = pick['sequence_interval_data_list']
 
             if desinsoid_folder != "":
-                static_distortion = mat_engi.Static_Distortion_Repair(os.path.join(desinsoid_folder, pick['desinusoid_data_filename'].split("//")[-1])) # this uses filename instead of absolute path to avoid errors in finding the file
+                static_distortion = mat_engi.Static_Distortion_Repair(os.path.join(desinsoid_folder, pick[
+                    'desinusoid_data_filename'].split("//")[
+                    -1]))  # this uses filename instead of absolute path to avoid errors in finding the file
             else:
                 static_distortion = []
             firsttime = True
@@ -145,10 +149,12 @@ for thisfile in os.listdir(dmp_folder_path):
             pickle_file.close()
 
             # Find the dmp's matching image(s).
-            modalities = ('confocal', 'split_det', 'avg', 'visible', 'PMT1CF', 'PMT2NW', 'PMT3NE', 'PMT4SE', 'PMT5SW', 'PMT1C', 'PMT2N', 'PMT3E', 'PMT4S', 'PMT5W', 'avg_785nm', 'avg_673nm', 'NIRCON', 'split_diag45', 'split_diag135', 'split_horz', 'split_vert', 'VISCON') # added WAIVS modes, added quad modes
+            modalities = (
+            'confocal', 'split_det', 'avg', 'visible', 'PMT1CF', 'PMT2NW', 'PMT3NE', 'PMT4SE', 'PMT5SW', 'PMT1C',
+            'PMT2N', 'PMT3E', 'PMT4S', 'PMT5W', 'avg_785nm', 'avg_673nm', 'NIRCON', 'split_diag45', 'split_diag135',
+            'split_horz', 'split_vert', 'VISCON')  # added WAIVS modes, added quad modes
 
-
-            images_to_fix =[]
+            images_to_fix = []
             # Find all images in our folder that this dmp applies to.
             for thismode in modalities:
                 if thismode in thisfile:
@@ -159,23 +165,22 @@ for thisfile in os.listdir(dmp_folder_path):
                             if (checkfile in imagefile) and (imagefile.endswith(".tif") or imagefile.endswith(".avi")):
                                 images_to_fix.append(imagefile)
 
-            if not images_to_fix:# If we don't have any accompanying modality images, just find the image this dmp applies to.
+            if not images_to_fix:  # If we don't have any accompanying modality images, just find the image this dmp applies to.
                 checkfile = thisfile[0:-4]
                 for imagefile in os.listdir(image_folder_path):
                     if (checkfile in imagefile) and (imagefile.endswith(".tif") or imagefile.endswith(".avi")):
                         images_to_fix.append(imagefile)
-            
+
             if images_to_fix:
 
+                minmaxpix = np.empty([1, 2])
 
-                minmaxpix = np.empty([1,2])
-               		
                 for frame in strip_translation_info:
                     for frame_contents in frame:
                         ref_pixels = frame_contents['slow_axis_pixels_in_current_frame_interpolated']
-                        minmaxpix = np.append(minmaxpix,[[ref_pixels[0], ref_pixels[-1]]], axis=0)
+                        minmaxpix = np.append(minmaxpix, [[ref_pixels[0], ref_pixels[-1]]], axis=0)
 
-                minmaxpix=minmaxpix[1:,:]
+                minmaxpix = minmaxpix[1:, :]
                 topmostrow = minmaxpix[:, 0].max()
                 bottommostrow = minmaxpix[:, 1].min()
 
@@ -184,42 +189,43 @@ for thisfile in os.listdir(dmp_folder_path):
                 # np.savetxt(pickle_path[0:-4] + "_transforms.csv", np.array([pick['strip_cropping_ROI_2'][-1]]),
                 #            delimiter=",", newline="\n", fmt="%f")
 
-                shift_array = np.zeros([len(strip_translation_info)*3, 1000])
+                shift_array = np.zeros([len(strip_translation_info) * 3, 1000])
                 shift_ind = 0
                 for frame in strip_translation_info:
                     if len(frame) > 0:
                         # print "************************ Frame " + str(frame[0]['frame_index'] + 1) + "************************"
                         # print "Adjusting the rows...."
                         frame_ind = frame[0]['frame_index']
-                        slow_axis_pixels=np.zeros([1])
-                        all_col_shifts=np.zeros([1])
-                        all_row_shifts=np.zeros([1])
+                        slow_axis_pixels = np.zeros([1])
+                        all_col_shifts = np.zeros([1])
+                        all_row_shifts = np.zeros([1])
 
-                        for frame_contents in frame:                             
-                            slow_axis_pixels = np.append(slow_axis_pixels,frame_contents['slow_axis_pixels_in_reference_frame'])
-                             
+                        for frame_contents in frame:
+                            slow_axis_pixels = np.append(slow_axis_pixels,
+                                                         frame_contents['slow_axis_pixels_in_reference_frame'])
+
                             ff_row_shift = ff_translation_info_rowshift[frame_ind]
                             ff_col_shift = ff_translation_info_colshift[frame_ind]
 
-                            #First set the relative shifts
+                            # First set the relative shifts
                             row_shift = (np.subtract(frame_contents['slow_axis_pixels_in_reference_frame'],
                                                      frame_contents['slow_axis_pixels_in_current_frame_interpolated']))
                             col_shift = (frame_contents['fast_axis_pixels_in_reference_frame_interpolated'])
 
-                            #These will contain all of the motion, not the relative motion between the aligned frames-
-                            #So then subtract the full frame row shift
+                            # These will contain all of the motion, not the relative motion between the aligned frames-
+                            # So then subtract the full frame row shift
                             row_shift = np.add(row_shift, ff_row_shift)
                             col_shift = np.add(col_shift, ff_col_shift)
-                            all_col_shifts = np.append(all_col_shifts,col_shift)
-                            all_row_shifts = np.append(all_row_shifts,row_shift)
+                            all_col_shifts = np.append(all_col_shifts, col_shift)
+                            all_row_shifts = np.append(all_row_shifts, row_shift)
 
                         slow_axis_pixels = slow_axis_pixels[1:]
                         all_col_shifts = all_col_shifts[1:]
                         all_row_shifts = all_row_shifts[1:]
 
-                        shift_array[shift_ind*3,   0:len(slow_axis_pixels)] = slow_axis_pixels
-                        shift_array[shift_ind*3+1, 0:len(all_col_shifts)] = all_col_shifts
-                        shift_array[shift_ind*3+2, 0:len(all_row_shifts)] = all_row_shifts
+                        shift_array[shift_ind * 3, 0:len(slow_axis_pixels)] = slow_axis_pixels
+                        shift_array[shift_ind * 3 + 1, 0:len(all_col_shifts)] = all_col_shifts
+                        shift_array[shift_ind * 3 + 2, 0:len(all_row_shifts)] = all_row_shifts
 
                         shift_ind += 1
 
@@ -228,11 +234,11 @@ for thisfile in os.listdir(dmp_folder_path):
                 rois = np.array(pick['strip_cropping_ROI_2'][0])
 
                 for i in range(1, len(pick['strip_cropping_ROI_2'])):
-                    rois = np.append(rois, pick['strip_cropping_ROI_2'][i],axis=0)
+                    rois = np.append(rois, pick['strip_cropping_ROI_2'][i], axis=0)
 
                 for image in images_to_fix:
                     # progo.configure("Removing distortion from :"+image +"...")
-                    print("Removing distortion from :"+image +"...")
+                    print("Removing distortion from :" + image + "...")
                     mat_engi.Eye_Motion_Distortion_Repair(image_folder_path, image, rois.tolist(),
                                                           shift_array.tolist(), static_distortion, nargout=0)
 
