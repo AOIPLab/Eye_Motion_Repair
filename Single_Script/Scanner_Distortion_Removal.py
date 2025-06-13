@@ -242,6 +242,8 @@ for thisfile in os.listdir(dmp_folder_path):
                     mat_engi.Eye_Motion_Distortion_Repair(image_folder_path, image, rois.tolist(),
                                                           shift_array.tolist(), static_distortion, nargout=0)
 
+                mat_engi.trim_emr_edges(image_folder_path + "/Repaired")
+
                 # progo.step()
 
         except:
