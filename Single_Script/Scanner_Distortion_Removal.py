@@ -48,6 +48,7 @@ except:
     import os, sys, ctypes
     import subprocess
     import socket
+    import csv
 
     options = {}
     options['title'] = 'Please select your [MATLABROOT]\extern\engines\python folder to link to MATLAB.'
@@ -70,6 +71,7 @@ import tkinter.constants as Tkconstants
 import tkinter.filedialog as tkFileDialog
 import tkinter.messagebox as tkMessageBox
 import numpy as np
+import csv
 
 root = tk.Tk()
 
@@ -103,6 +105,8 @@ image_folder_path = tkFileDialog.askdirectory(**options)
 # progo = ttk.Progressbar(root, length=len(os.listdir(dmp_folder_path)))
 # progo.pack()
 
+failed_list = []
+failed_path = image_folder_path + "/Repaired" + "_failed_dmps.csv"
 
 for thisfile in os.listdir(dmp_folder_path):
     if thisfile.endswith(".dmp"):
@@ -247,8 +251,18 @@ for thisfile in os.listdir(dmp_folder_path):
                 # progo.step()
 
         except:
-            tkMessageBox.showwarning("DMP failed to process.",
-                                     "Failed to process DMP (" + thisfile + ")! This file may be corrupted. Re-process the DMP, or contact your local RFC.")
+            # tkMessageBox.showwarning("DMP failed to process.",
+            #                        "Failed to process DMP (" + thisfile + ")! This file may be corrupted. Re-process the DMP, or contact your local RFC.")
+            print("Failed to process DMP (" + thisfile + ")!")
+            # failed_list.append(thisfile)
+            with open(failed_path, 'a', newline='') as csvfile:
+                # Create a CSV writer object
+                csv_writer = csv.writer(csvfile)
+                # Write the failed one to the sheet
+                csv_writer.writerow([thisfile])
+
+
+
 
 root.destroy()
 # shiftT = np.transpose(shift_array)
