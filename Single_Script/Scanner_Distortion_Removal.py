@@ -108,7 +108,7 @@ image_folder_path = tkFileDialog.askdirectory(**options)
 failed_list = []
 failed_path = image_folder_path + "/Repaired" + "_failed_dmps.csv"
 
-for thisfile in os.listdir(dmp_folder_path):
+for thisfile in sorted(os.listdir(dmp_folder_path)):
     if thisfile.endswith(".dmp"):
 
         try:
@@ -243,9 +243,20 @@ for thisfile in os.listdir(dmp_folder_path):
                 for image in images_to_fix:
                     # progo.configure("Removing distortion from :"+image +"...")
                     print("Removing distortion from :" + image + "...")
-                    mat_engi.Eye_Motion_Distortion_Repair(image_folder_path, image, rois.tolist(),
-                                                          shift_array.tolist(), static_distortion, nargout=0)
+                    result = mat_engi.Eye_Motion_Distortion_Repair(image_folder_path, image, rois.tolist(),
+                                                          shift_array.tolist(), static_distortion)
 
+                    # add check to make sure the repair was successful before trimming
+                    if result == 1:
+                        mat_engi.trim_emr_edges(image_folder_path + "/Repaired", image)
+                    else:
+                        print("Failed to repair image (" + image + ")! Image height after repair was <1 pixel.")
+                        # failed_list.append(thisfile)
+                        with open(failed_path, 'a', newline='') as csvfile:
+                            # Create a CSV writer object
+                            csv_writer = csv.writer(csvfile)
+                            # Write the failed one to the sheet
+                            csv_writer.writerow([image])
 
 
                 # progo.step()
@@ -261,7 +272,7 @@ for thisfile in os.listdir(dmp_folder_path):
                 # Write the failed one to the sheet
                 csv_writer.writerow([thisfile])
 
-mat_engi.trim_emr_edges(image_folder_path + "/Repaired")
+
 
 
 root.destroy()

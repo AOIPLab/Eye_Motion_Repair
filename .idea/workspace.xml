@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8ee7589f-b4c2-4efc-a726-eb1956d5f7d9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Single_Script/Eye_Motion_Distortion_Repair.m" beforeDir="false" afterPath="$PROJECT_DIR$/Single_Script/Eye_Motion_Distortion_Repair.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Single_Script/Scanner_Distortion_Removal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Single_Script/Scanner_Distortion_Removal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Single_Script/trim_emr_edges.m" beforeDir="false" afterPath="$PROJECT_DIR$/Single_Script/trim_emr_edges.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +83,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python.Scanner_Distortion_Removal.executor": "Debug",
+    "Python.Scanner_Distortion_Removal.executor": "Run",
     "Python.applyBatch.executor": "Debug",
     "Python.wxCreateAndModifyBatchFile.pyw.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -262,9 +264,6 @@
       <window_info anchor="right" id="R Packages" order="4" />
     </layout-to-restore>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -275,8 +274,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Single_Script/Scanner_Distortion_Removal.py</url>
-          <line>263</line>
-          <option name="timeStamp" value="15" />
+          <line>252</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

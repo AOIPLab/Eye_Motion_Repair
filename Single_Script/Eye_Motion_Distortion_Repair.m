@@ -1,4 +1,4 @@
-function [] = Eye_Motion_Distortion_Repair(motion_path, fName, crop_ROI, framemotion, static_grid_distortion)
+function [success] = Eye_Motion_Distortion_Repair(motion_path, fName, crop_ROI, framemotion, static_grid_distortion)
 % EYE_MOTION_DISTORTION_REPAIR(motion_path, fName, static_grid_distortion,framemotion, static_grid_distortion)
 %
 % [] = EYE_MOTION_DISTORTION_REPAIR(motion_path, fName, static_grid_distortion,framemotion, static_grid_distortion)
@@ -290,9 +290,14 @@ clear tmp;
     warpedStk = warpedStk( round(cropbox(2)):round(cropbox(4)), round(cropbox(1)):round(cropbox(3)), : );    
 
     if length(imStk)== 1
-        
-        saveTransparentTif(warpedStk(:,:,1),fullfile(motion_path,'Repaired', [fName(1:end-4) '_repaired.tif']));
-        
+
+        if size(warpedStk,1) >= 1
+            saveTransparentTif(warpedStk(:,:,1),fullfile(motion_path,'Repaired', [fName(1:end-4) '_repaired.tif']));
+            success = 1;
+        else
+            success = 0;
+            return
+        end
 %         imwrite(warpedStk, fullfile(motion_path,'Repaired', [fName(1:end-4) '_repaired.tif']), 'Compression','lzw');
     else
         vidobj = VideoWriter( fullfile(motion_path,'Repaired', [fName(1:end-4) '_repaired.avi']), 'Grayscale AVI' );
@@ -300,6 +305,7 @@ clear tmp;
         open(vidobj);
         writeVideo(vidobj,uint8(warpedStk));
         close(vidobj);
+        success = 1;
     end
     
 end

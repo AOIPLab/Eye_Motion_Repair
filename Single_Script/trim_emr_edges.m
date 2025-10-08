@@ -1,27 +1,27 @@
-function [out_path] = trim_emr_edges(in_path, img_fnames)
-%trim_emr_edges Crops out the warped edges on the left and right sides of
-%emr'd images and returns a single layer tif which should be compatible
-%with the automontagers
-
-%% Create yet another folder
-out_path = fullfile(in_path, 'trim');
-if exist(out_path, 'dir') == 0
-    mkdir(out_path)
-end
-
-%% Get image(s)
-if exist('img_fnames', 'var') == 0
-    tif_dir = dir(fullfile(in_path, '*.tif'));
-else
-    tif_dir(numel(img_fnames)).name = '';
-    for ii=1:numel(img_fnames)
-        tif_dir(ii).name = img_fnames{ii};
+function [out_path] = trim_emr_edges(in_path, img_fname)
+    %trim_emr_edges Crops out the warped edges on the left and right sides of
+    %emr'd images and returns a single layer tif which should be compatible
+    %with the automontagers
+    
+    %% Create yet another folder
+    out_path = fullfile(in_path, 'trim');
+    if exist(out_path, 'dir') == 0
+        mkdir(out_path)
     end
-end
-
-%% Determine cropping window, 
-for ii=1:numel(tif_dir)
-    img = imread(fullfile(in_path, tif_dir(ii).name));
+    
+    %% Get image(s)
+    if exist('img_fname', 'var') == 0
+        tif_dir = dir(fullfile(in_path, '*.tif'));
+    else
+        name_spl = split(img_fname, '.tif');
+        name_spl_1 = name_spl(1);
+        img_fname_repaired = strcat(name_spl_1, "_repaired.tif");
+        tif_dir.name = img_fname_repaired;
+        % end
+    end
+    
+    %% Determine cropping window, 
+    img = imread(fullfile(in_path, tif_dir.name));
     alpha_layer = boolean(img(:,:,2)./255);
     
     % I think it's safe to only do horizontal cropping
@@ -51,9 +51,9 @@ for ii=1:numel(tif_dir)
     end
     
     %% Write output
-    out_fname = strrep(tif_dir(ii).name, '.tif', '_trim.tif');
+    out_fname = strrep(tif_dir.name, '.tif', '_trim.tif');
     imwrite(out_img, fullfile(out_path, out_fname), 'compression', 'none');
 end
 
-end
+% end
 
