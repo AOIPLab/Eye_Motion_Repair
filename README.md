@@ -23,6 +23,7 @@ Code that removes residual distortions due to eye motion from images and videos 
 - Create new interpreter
   - existing interpreter, select python.exe in the folder location that was just installed
   - Install numpy for the interpreter
+  - You may also need to install matlabengine (the version number should correspond with the matlab version number you have).
 - On initial script run through, script will prompt you to select the python folder within the matlab installation folder.
   - It will then perform the linking commands between matlab and python and will end the script
 - The script should then work as expected.
