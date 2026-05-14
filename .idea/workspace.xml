@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8ee7589f-b4c2-4efc-a726-eb1956d5f7d9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Single_Script/Eye_Motion_Distortion_Repair.m" beforeDir="false" afterPath="$PROJECT_DIR$/Single_Script/Eye_Motion_Distortion_Repair.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Single_Script/Scanner_Distortion_Removal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Single_Script/Scanner_Distortion_Removal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Single_Script/trim_emr_edges.m" beforeDir="false" afterPath="$PROJECT_DIR$/Single_Script/trim_emr_edges.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,17 +79,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Scanner_Distortion_Removal.executor": "Run",
-    "Python.applyBatch.executor": "Debug",
-    "Python.wxCreateAndModifyBatchFile.pyw.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "python3__version",
-    "last_opened_file_path": "C:/Users/jgrieshop/Documents/GitHub/Eye_Motion_Repair",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Scanner_Distortion_Removal.executor&quot;: &quot;Run&quot;,
+    &quot;Python.applyBatch.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.wxCreateAndModifyBatchFile.pyw.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;python3__version&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/DubraLab/Applications/DeMotion&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.Scanner_Distortion_Removal">
     <configuration name="Distortion_Exporter" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Eye-Motion-Repair" />
@@ -183,10 +181,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Distortion_Exporter" />
+      <item itemvalue="Python.Scanner_Distortion_Removal" />
       <item itemvalue="Python.applyBatch" />
       <item itemvalue="Python.wxCreateAndModifyBatchFile.pyw" />
-      <item itemvalue="Python.Scanner_Distortion_Removal" />
-      <item itemvalue="Python.Distortion_Exporter" />
     </list>
     <recent_temporary>
       <list>
@@ -271,11 +269,6 @@
           <url>file://$PROJECT_DIR$/../ARFS/fx/applyBatch.py</url>
           <line>91</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Single_Script/Scanner_Distortion_Removal.py</url>
-          <line>252</line>
-          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

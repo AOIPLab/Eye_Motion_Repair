@@ -156,7 +156,7 @@ for thisfile in sorted(os.listdir(dmp_folder_path)):
             modalities = (
             'confocal', 'split_det', 'avg', 'visible', 'PMT1CF', 'PMT2NW', 'PMT3NE', 'PMT4SE', 'PMT5SW', 'PMT1C',
             'PMT2N', 'PMT3E', 'PMT4S', 'PMT5W', 'avg_785nm', 'avg_673nm', 'NIRCON', 'split_diag45', 'split_diag135',
-            'split_horz', 'split_vert', 'VISCON')  # added WAIVS modes, added quad modes
+            'split_horz', 'split_vert', 'VISCON', 'reflect')  # added WAIVS modes, added quad modes, added robotrak
 
             images_to_fix = []
             # Find all images in our folder that this dmp applies to.
@@ -193,7 +193,7 @@ for thisfile in sorted(os.listdir(dmp_folder_path)):
                 # np.savetxt(pickle_path[0:-4] + "_transforms.csv", np.array([pick['strip_cropping_ROI_2'][-1]]),
                 #            delimiter=",", newline="\n", fmt="%f")
 
-                shift_array = np.zeros([len(strip_translation_info) * 3, 1000])
+                shift_array = np.zeros([len(strip_translation_info) * 3, 1050])
                 shift_ind = 0
                 for frame in strip_translation_info:
                     if len(frame) > 0:
